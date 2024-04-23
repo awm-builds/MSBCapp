@@ -1,0 +1,19 @@
+<%- include('../partials/header') %>
+<br>
+<br>
+
+<h1>Home</h1>
+
+<form method="GET" action="/comics/search">
+    <input type="text" name="search"/>
+    <button type="submit">Search</button>
+</form>
+
+<% comicData.forEach( function(c) { %>
+<p>
+    <%= c.title %>
+</p>
+<img src="<%= c.thumbnail.path %>/portrait_incredible.jpg">
+<% }) %>
+
+<%- include('../partials/footer') %>
