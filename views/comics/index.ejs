@@ -10,10 +10,17 @@
 </form>
 
 <% comicData.forEach( function(c) { %>
-<p>
-    <%= c.title %>
-</p>
-<img src="<%= c.thumbnail.path %>/portrait_incredible.jpg">
+<form action="/comics" method="POST">
+    <img src="<%= c.thumbnail.path %>/portrait_incredible.jpg"/>
+    <input type="hidden" name="title" value="<%= c.title %>"/>
+    <input type="hidden" name="apiId" value="<%= c.id %>"/>
+    <input type="hidden" name="description" value="<%= c.description %>"/>
+    <input type="hidden" name="dates" value="<%= c.dates[1].date %>"/>
+    <input type="hidden" name="image" value="<%= c.thumbnail.path %>"/>
+    <button type="submit">
+        View Comic Details
+    </button>
+</form>
 <% }) %>
 
 <%- include('../partials/footer') %>

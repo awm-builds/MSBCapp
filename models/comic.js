@@ -1,6 +1,10 @@
  const mongoose = require('mongoose');
  const Schema = mongoose.Schema;
 
+const reviewsSchema = new Schema({
+    
+});
+
 const comicSchema = new Schema({
     title: String,
     apiId: {
@@ -8,13 +12,13 @@ const comicSchema = new Schema({
         required: true
     },
     description: String,
-    isbn: String,
-    images: [],
-    dates: Date,
+    image: String,
+    date: Date,
     users: [{
         type: Schema.Types.ObjectId,
         ref: 'User',
     }],
+    reviews: [reviewsSchema],
 }, {
     timestamps: true
 });

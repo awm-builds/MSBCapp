@@ -1,0 +1,14 @@
+<%- include('../partials/header') %>
+
+    <h1>
+        <%= comic.title %>
+    </h1>
+    <img src="<%= comic.image %>/portrait_incredible.jpg"/>
+    <p>
+        <%= comic.description %>
+    </p>
+    <p>
+        <%= comic.date.toLocaleDateString() %>
+    </p>
+
+<%- include('../partials/footer') %>
