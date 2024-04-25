@@ -7,7 +7,11 @@ module.exports = {
 
 async function create(req, res) {
   const comic = await Comic.findById(req.params.id);
-  // We can push (or unshift) subdocs into Mongoose arrays
+
+  req.body.user = req.user._id;
+  req.body.userName = req.user.name;
+  req.body.userAvatar = req.user.avatar;
+
   comic.reviews.push(req.body);
   try {
     // Save any changes made to the movie doc
