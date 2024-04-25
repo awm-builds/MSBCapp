@@ -1,13 +1,13 @@
 var express = require('express');
 var router = express.Router();
-const comicsCtlr = require('../controllers/comics');
+const comicsCtrl = require('../controllers/comics');
 
 /* GET users listing. */
-router.get('/', comicsCtlr.index);
-router.get('/search', comicsCtlr.searchApi);
+router.get('/', comicsCtrl.index);
+router.get('/search', comicsCtrl.searchApi);
 
-router.post('/', comicsCtlr.create);
+router.post('/', comicsCtrl.create);
 
-router.get('/:id', comicsCtlr.show);
+router.get('/:id', comicsCtrl.show);
 
 module.exports = router;

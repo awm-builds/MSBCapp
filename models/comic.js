@@ -2,10 +2,6 @@
  const Schema = mongoose.Schema;
 
 const reviewsSchema = new Schema({
-    
-});
-
-const reviewSchema = new Schema({
   content: {
     type: String,
     required: true
