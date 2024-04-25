@@ -2,8 +2,18 @@ const Comic = require('../models/comic');
 
 module.exports = {
   create,
-  //delete: deleteReview
+  delete: deleteReview
 };
+
+async function deleteReview(req, res) {
+  // Note the cool "dot" syntax to query on the property of a subdoc
+  const comic = await Comic.findOne({ 'reviews._id': req.params.id, 'reviews.user': req.user._id });
+  // Rogue user!
+  if (!comic) return res.redirect('/comics');
+  comic.reviews.remove(req.params.id);
+  await comic.save();
+  res.redirect(`/comics/${comic._id}`);
+}
 
 async function create(req, res) {
   const comic = await Comic.findById(req.params.id);

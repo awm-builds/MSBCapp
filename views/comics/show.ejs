@@ -44,6 +44,13 @@
             <td><%= c.createdAt.toLocaleDateString() %></td>
             <td><%= c.content %></td>
             <td><%= c.rating %></td>
+            <td>
+                <% if (user?._id.equals(c.user)) { %>
+                <form action="/reviews/<%= c._id %>?_method=DELETE" method="POST">
+                    <button type="submit">X</button>
+                </form>
+                <% } %>
+            </td>
             </tr>
         <% }); %>
         </tbody>
