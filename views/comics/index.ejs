@@ -2,16 +2,17 @@
 <br>
 <br>
 
-<h1>Home</h1>
-
+<div class="searchComics">
 <form method="GET" action="/comics/search">
     <input type="text" name="search"/>
     <button type="submit">Search</button>
 </form>
 
+
+<div class="comicsContainer">
 <% comicData.forEach( function(c) { %>
-<form action="/comics" method="POST">
-    <img src="<%= c.thumbnail.path %>/portrait_incredible.jpg"/>
+<form class="comics" action="/comics" method="POST">
+    <img src="<%= c.thumbnail.path %>/portrait_incredible.jpg" height="300px" width="auto" />
     <input type="hidden" name="title" value="<%= c.title %>"/>
     <input type="hidden" name="apiId" value="<%= c.id %>"/>
     <input type="hidden" name="description" value="<%= c.description %>"/>
@@ -22,5 +23,7 @@
     </button>
 </form>
 <% }) %>
+</div>
+</div>
 
 <%- include('../partials/footer') %>
