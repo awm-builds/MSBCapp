@@ -39,12 +39,12 @@
         </thead>
         <tbody>
         <% comic.reviews.forEach(function(c) { %>
-            <tr>
-            <td class="review-user"><img alt="avatar" src="<%= c.userAvatar %>" referrerpolicy="no-referrer" ><%= c.userName %></td>
+            <tr class="review-user2">
+            <td class="review-user3"><img alt="avatar" src="<%= c.userAvatar %>" referrerpolicy="no-referrer" ><%= c.userName %></td>
             <!-- .toLocaleDateString() provides a more friendly date format -->
-            <td><%= c.createdAt.toLocaleDateString() %></td>
-            <td><%= c.content %></td>
-            <td><%= c.rating %></td>
+            <td class="review-user3"><%= c.createdAt.toLocaleDateString() %></td>
+            <td class="review-user3"><%= c.content %></td>
+            <td class="review-user3"><%= c.rating %></td>
             <td>
                 <% if (user?._id.equals(c.user)) { %>
                 <form action="/reviews/<%= c._id %>?_method=DELETE" method="POST">
