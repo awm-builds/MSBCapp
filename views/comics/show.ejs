@@ -40,6 +40,7 @@
         <tbody>
         <% comic.reviews.forEach(function(c) { %>
             <tr>
+            <td class="review-user"><img alt="avatar" src="<%= c.userAvatar %>" referrerpolicy="no-referrer" ><%= c.userName %></td>
             <!-- .toLocaleDateString() provides a more friendly date format -->
             <td><%= c.createdAt.toLocaleDateString() %></td>
             <td><%= c.content %></td>
