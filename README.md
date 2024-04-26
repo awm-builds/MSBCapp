@@ -3,7 +3,7 @@ Marvel Scholar Comic BookClub is the home of a large library of comic details an
 
 # Screenshot
 
-<img src="#">
+<img src="/public/images/Proj2Screenshot.JPG">
 
 # Technologies Used
 
