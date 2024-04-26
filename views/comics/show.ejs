@@ -1,63 +1,74 @@
 <%- include('../partials/header') %>
 
-    <h1>
-        <%= comic.title %>
-    </h1>
-    <img src="<%= comic.image %>/portrait_incredible.jpg"/>
-    <p>
-        <%= comic.description %>
-    </p>
-    <p>
-        <%= comic.date.toLocaleDateString() %>
-    </p>
-    <br>
-    <!-- new markup below -->
-    <br><br><h2>Reviews</h2>
-    <form id="add-review-form" method="POST"
-    action="/comics/<%= comic._id %>/reviews">
-    <label>Review:</label>
-    <textarea name="content"></textarea>
-    <label>Rating:</label>
-    <select name="rating">
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5" selected>5</option>
-    </select>
-    <input type="submit" value="Add Review">
-    </form>
+<div class="bg-secondary text-light h-50 show-cont mb-3">
+        <h1>
+            <%= comic.title %>
+        </h1>
+        <img src="<%= comic.image %>/portrait_incredible.jpg"/>
+        <p>
+            <%= comic.description %>
+        </p>
+        <p>
+            <%= comic.date.toLocaleDateString() %>
+        </p>
+        <br>
+        <!-- new markup below -->
+        <br><br><h2>Reviews</h2>
+    <div>
+        <form id="add-review-form" method="POST"
+        action="/comics/<%= comic._id %>/reviews">
+        <label>Review:</label>
+        <textarea name="content"></textarea>
+        <label>Rating:</label>
+        <select name="rating">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5" selected>5</option>
+        </select>
+        <input type="submit" value="Add Review">
+        </form>
+    </div>
+</div>
+
 
     <% if (comic.reviews.length) { %>
-    <table>
-        <thead>
-        <tr>
-            <th>Date</th>
-            <th>Review</th>
-            <th>Rating</th>
-        </tr>
-        </thead>
-        <tbody>
-        <% comic.reviews.forEach(function(c) { %>
-            <tr class="review-user2">
-            <td class="review-user3"><img alt="avatar" src="<%= c.userAvatar %>" referrerpolicy="no-referrer" ><%= c.userName %></td>
-            <!-- .toLocaleDateString() provides a more friendly date format -->
-            <td class="review-user3"><%= c.createdAt.toLocaleDateString() %></td>
-            <td class="review-user3"><%= c.content %></td>
-            <td class="review-user3"><%= c.rating %></td>
-            <td>
-                <% if (user?._id.equals(c.user)) { %>
-                <form action="/reviews/<%= c._id %>?_method=DELETE" method="POST">
-                    <button type="submit">X</button>
-                </form>
+    <div class="container show-cont row"></div>
+        <div class="container text-center">
+            <div class="row">
+                <div class="col">User</div>
+                <div class="col">Date</div>
+                <div class="col">Content</div>
+                <div class="col">Rating</div>
+                <% if (user?._id.equals(comic.reviews.user)) { %>
+                    <div class="col">Delete</div>
                 <% } %>
-            </td>
-            </tr>
-        <% }); %>
-        </tbody>
-    </table>
+        </div>
+        <br>
+        <% comic.reviews.forEach(function(c) { %>
+        <div class="container row">
+            <div class="col"><img alt="avatar" src="<%= c.userAvatar %>" referrerpolicy="no-referrer" ><%= c.userName %></div>
+            <div class="col"><%= c.createdAt.toLocaleDateString() %></div>
+            <div class="col"><%= c.content %></div>
+            <div class="col"><%= c.rating %></div>
+                <% if (user?._id.equals(c.user)) { %>
+                        <form action="/reviews/<%= c._id %>?_method=DELETE" method="POST">
+                            <button type="submit">X</button>
+                        </form>
+                    </div>
+                <% }%>
+        </div>
+        <% });%>
     <% } else { %>
-    <h5>No Reviews Yet</h5>
+    <div class="container text-center">
+        <div class="row">
+            <div class="col">
+                <h5>No Reviews Yet</h5>
+            </div>
+        </div>
+    </div>
     <% } %>
+</div>
 
 <%- include('../partials/footer') %>
